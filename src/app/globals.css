@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
+
+
 
 @theme {
   --font-cinzel: 'Cinzel', serif;
