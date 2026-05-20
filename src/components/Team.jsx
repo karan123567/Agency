@@ -48,158 +48,248 @@
 // }
 
 
+
 'use client'
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
-const STATS = [
-  { val: 120, suf: '+', label: 'Projects Delivered' },
-  { val: 98,  suf: '%', label: 'Client Satisfaction' },
-  { val: 40,  suf: '+', label: 'Global Clients'      },
-  { val: 7,   suf: '+', label: 'Years of Mastery'    },
+const MEMBERS = [
+  { initials: 'AK', name: 'ARYAN KAPOOR', role: 'Creative Director', bio: 'Leads brand strategy and visual direction for all major projects.',  bg: 'linear-gradient(160deg,#0d0020,#200040,#0a0010)', hoverBg: 'linear-gradient(to top,rgba(123,45,255,0.95),rgba(255,123,46,0.85))' },
+  { initials: 'SM', name: 'SARA MEHTA',   role: 'Lead Developer',    bio: 'Architects scalable frontends with buttery smooth animations.',      bg: 'linear-gradient(160deg,#200010,#400020,#100010)', hoverBg: 'linear-gradient(to top,rgba(255,44,200,0.9),rgba(255,123,46,0.8))' },
+  { initials: 'RV', name: 'ROHAN VARMA',  role: '3D & Motion',       bio: 'Brings interfaces to life with cosmic, purposeful motion.',          bg: 'linear-gradient(160deg,#001020,#002040,#001a10)', hoverBg: 'linear-gradient(to top,rgba(0,200,255,0.9),rgba(0,255,170,0.8))' },
 ]
 
-export default function Stats() {
+export default function Team() {
   const ref = useRef(null)
 
   useEffect(() => {
     if (!ref.current) return
-    const boxes = ref.current.querySelectorAll('.stat-box')
-
-    gsap.fromTo(boxes, { opacity: 0, y: 50 }, {
-      opacity: 1, y: 0, stagger: 0.1, duration: 0.9, ease: 'power3.out',
-      scrollTrigger: { trigger: ref.current, start: 'top 80%' }
-    })
-
-    boxes.forEach(box => {
-      const target = parseInt(box.dataset.target)
-      const numEl  = box.querySelector('.num-val')
-      const obj    = { v: 0 }
-      ScrollTrigger.create({
-        trigger: ref.current, start: 'top 80%',
-        onEnter() {
-          gsap.to(obj, {
-            v: target, duration: 2.5, ease: 'power2.out',
-            onUpdate() { numEl.textContent = Math.round(obj.v) }
-          })
-        }
-      })
-    })
+    gsap.fromTo(
+      ref.current.querySelectorAll('.team-card'),
+      { opacity: 0, y: 80, scale: 0.93 },
+      { opacity: 1, y: 0, scale: 1, stagger: 0.15, duration: 1, ease: 'back.out(1.2)',
+        scrollTrigger: { trigger: ref.current, start: 'top 75%' } }
+    )
   }, [])
+
+  const handleEnter = e => {
+    const hover = e.currentTarget.querySelector('.team-hover')
+    hover.style.opacity   = '1'
+    hover.style.transform = 'translateY(0)'
+  }
+
+  const handleLeave = e => {
+    const hover = e.currentTarget.querySelector('.team-hover')
+    hover.style.opacity   = '0'
+    hover.style.transform = 'translateY(20px)'
+  }
 
   return (
     <>
       <style>{`
-        .stats-section {
-          background: rgba(4, 1, 14, 0.85);
-          backdrop-filter: blur(40px);
-          -webkit-backdrop-filter: blur(40px);
-          border-top:    1px solid rgba(255, 255, 255, 0.07);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        .team-section {
+          padding: 120px 60px;
         }
 
-        /* Hairline-gutter grid */
-        .stats-grid {
+        .team-eyebrow { margin-bottom: 60px; }
+
+        /* ── 3-col card grid ── */
+        .team-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1px;
-          background: rgba(255, 255, 255, 0.07);
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
         }
 
-        .stat-box {
-          padding: 60px 40px;
-          background: rgba(4, 1, 14, 0.9);
+        .team-card {
           position: relative;
           overflow: hidden;
           cursor: none;
+          border: 1px solid rgba(255, 255, 255, 0.07);
         }
 
-        .stat-line {
-          position: absolute;
-          bottom: 0; left: 0;
-          width: 100%; height: 2px;
-          background: linear-gradient(90deg, #7b2dff, #ff7b2e, #f5c842);
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 0.6s;
+        .team-portrait {
+          aspect-ratio: 3 / 4;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .stat-number {
+        .team-initials {
           font-family: 'Cinzel', serif;
-          font-size: clamp(56px, 6vw, 88px);
-          line-height: 1;
+          font-size: clamp(60px, 8vw, 100px);
+          font-weight: 900;
+          opacity: 0.06;
+          user-select: none;
+        }
+
+        .team-info {
+          padding: 24px;
+          background: rgba(4, 1, 14, 0.92);
+          border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .team-name {
+          font-family: 'Cinzel', serif;
+          font-size: 22px;
+          font-weight: 400;
+          letter-spacing: 0.1em;
           color: #f8f2e8;
         }
 
-        .stat-suf {
-          font-size: 0.45em;
-          color: #f5c842;
-        }
-
-        .stat-label {
+        .team-role {
           font-family: 'Space Mono', monospace;
-          font-size: 10px;
+          font-size: 9px;
           letter-spacing: 0.2em;
           color: #5a5280;
           text-transform: uppercase;
+          margin-top: 6px;
+        }
+
+        .team-hover {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 32px;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.5s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        .team-hover-first {
+          font-family: 'Cinzel', serif;
+          font-size: 32px;
+          color: #fff;
+          letter-spacing: 0.1em;
+        }
+
+        .team-hover-role {
+          font-family: 'Space Mono', monospace;
+          font-size: 9px;
+          letter-spacing: 0.2em;
+          color: rgba(255, 255, 255, 0.55);
+          margin-top: 8px;
+          text-transform: uppercase;
+        }
+
+        .team-hover-bio {
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.8);
           margin-top: 16px;
+          line-height: 1.7;
         }
 
         /* ── TABLET (≤ 1024px) ── */
         @media (max-width: 1024px) {
-          .stat-box    { padding: 48px 28px; }
-          .stat-number { font-size: clamp(44px, 5.5vw, 72px); }
-          .stat-label  { font-size: 9px; letter-spacing: 0.15em; }
+          .team-section { padding: 100px 40px; }
+          .team-name    { font-size: 18px; }
+          .team-hover-first { font-size: 26px; }
+          .team-grid    { gap: 16px; }
         }
 
         /*
          * ── TABLET narrow (≤ 768px) ──
-         * 4-across is too tight; switch to 2 × 2.
+         * 3-col portrait cards at this width are ~220px each — initials,
+         * name, and hover bio all start to collide. Switch to 1-col stacked
+         * layout where portrait + info sit side-by-side horizontally.
          */
         @media (max-width: 768px) {
-          .stats-grid  { grid-template-columns: repeat(2, 1fr); }
-          .stat-box    { padding: 48px 32px; }
-          .stat-number { font-size: clamp(48px, 10vw, 72px); }
+          .team-section { padding: 80px 32px; }
+          .team-eyebrow { margin-bottom: 48px; }
+
+          .team-grid {
+            grid-template-columns: 1fr;
+            gap: 1px;                         /* hairline between rows */
+            background: rgba(255,255,255,0.07);
+          }
+
+          /* Horizontal card: portrait left, info right */
+          .team-card {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            cursor: pointer;
+          }
+
+          .team-portrait {
+            aspect-ratio: unset;  /* let the row height drive it */
+            min-height: 200px;
+          }
+
+          .team-initials { font-size: clamp(48px, 10vw, 72px); }
+
+          .team-info {
+            border-top: none;
+            border-left: 1px solid rgba(255, 255, 255, 0.07);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 28px 24px;
+          }
+
+          .team-name  { font-size: 16px; letter-spacing: 0.08em; }
+          .team-role  { font-size: 8px; }
+
+          /* Hover overlay still spans the full card */
+          .team-hover { padding: 24px 28px; }
+          .team-hover-first { font-size: 24px; }
+          .team-hover-bio   { font-size: 12px; margin-top: 10px; }
         }
 
         /* ── MOBILE (≤ 480px) ── */
         @media (max-width: 480px) {
-          .stat-box {
-            padding: 40px 24px;
-            cursor: pointer;
+          .team-section { padding: 72px 24px; }
+
+          /* Shrink portrait column so name isn't crushed on 320px */
+          .team-card {
+            grid-template-columns: 120px 1fr;
           }
 
-          .stat-number {
-            /* Each cell is ~50 vw; keep number from overflowing */
-            font-size: clamp(38px, 11vw, 56px);
-          }
+          .team-portrait { min-height: 160px; }
+          .team-initials { font-size: clamp(36px, 12vw, 56px); }
 
-          .stat-label {
-            font-size: 8px;
-            letter-spacing: 0.12em;
-            margin-top: 12px;
-          }
+          .team-info  { padding: 20px 18px; }
+          .team-name  { font-size: 14px; letter-spacing: 0.06em; }
+          .team-role  { font-size: 7px; margin-top: 4px; }
+
+          .team-hover         { padding: 18px 20px; }
+          .team-hover-first   { font-size: 20px; }
+          .team-hover-role    { font-size: 7px; }
+          .team-hover-bio     { font-size: 11px; line-height: 1.6; margin-top: 8px; }
         }
       `}</style>
 
-      <section ref={ref} className="stats-section">
-        <div className="stats-grid">
-          {STATS.map((s, i) => (
+      <section id="team" ref={ref} className="team-section">
+        <div className="eyebrow team-eyebrow">The Collective</div>
+
+        <div className="team-grid">
+          {MEMBERS.map((m, i) => (
             <div
               key={i}
-              className="stat-box hover-target"
-              data-target={s.val}
-              onMouseEnter={e => e.currentTarget.querySelector('.stat-line').style.transform = 'scaleX(1)'}
-              onMouseLeave={e => e.currentTarget.querySelector('.stat-line').style.transform = 'scaleX(0)'}
+              className="team-card hover-target"
+              onMouseEnter={handleEnter}
+              onMouseLeave={handleLeave}
             >
-              <div className="stat-line" />
-              <div className="stat-number">
-                <span className="num-val">0</span>
-                <span className="stat-suf">{s.suf}</span>
+              {/* Portrait */}
+              <div className="team-portrait" style={{ background: m.bg }}>
+                <span className="team-initials">{m.initials}</span>
               </div>
-              <div className="stat-label">{s.label}</div>
+
+              {/* Name / role strip */}
+              <div className="team-info">
+                <div className="team-name">{m.name}</div>
+                <div className="team-role">{m.role}</div>
+              </div>
+
+              {/* Hover overlay */}
+              <div className="team-hover" style={{ background: m.hoverBg }}>
+                <div className="team-hover-first">{m.name.split(' ')[0]}</div>
+                <div className="team-hover-role">{m.role}</div>
+                <div className="team-hover-bio">{m.bio}</div>
+              </div>
             </div>
           ))}
         </div>

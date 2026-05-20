@@ -268,7 +268,7 @@ export default function Hero() {
         <div className="hero-year">2025 — ∞</div>
 
         {/* Spacer so Three.js scroll-linked Shiva has room */}
-        <div style={{ height: '300vh' }} />
+        <div style={{ height: '180vh' }} />
       </section>
     </>
   )

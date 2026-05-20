@@ -47,6 +47,10 @@ gsap.registerPlugin(ScrollTrigger)
 export default function CTA() {
   const ref = useRef(null)
 
+  const openContact = () => {
+    document.dispatchEvent(new CustomEvent('openContact'))
+  }
+
   useEffect(() => {
     if (!ref.current) return
     gsap.fromTo(ref.current.querySelector('.cta-h'), { opacity: 0, y: 80 }, {
@@ -221,6 +225,7 @@ export default function CTA() {
           </h2>
 
           <button
+            onClick={openContact}
             className="cta-btn hover-target"
             onMouseEnter={e => e.currentTarget.style.background = '#f8f2e8'}
             onMouseLeave={e => e.currentTarget.style.background = '#f5c842'}
@@ -228,8 +233,8 @@ export default function CTA() {
             <span>Start a Project</span>
             <span>↗</span>
           </button>
+
           <a
-          
             href="mailto:hello@shakti.studio"
             className="cta-email"
             onMouseEnter={e => e.currentTarget.style.color = '#f5c842'}
