@@ -294,7 +294,7 @@ export default function Nav() {
       {/* ── Main bar ── */}
       <nav className={`nav-root${scrolled ? ' scrolled' : ''}`}>
         <a href="#" className="nav-logo">
-          SHAKTI<sup style={{ fontSize: 10, color: '#f5c842' }}>®</sup>
+          AstraForge<sup style={{ fontSize: 10, color: '#f5c842' }}>®</sup>
         </a>
 
         {/* Desktop links */}
@@ -347,7 +347,7 @@ export default function Nav() {
         </button>
 
         <div className="nav-drawer-footer">
-          <span>© Shakti Studio 2025</span>
+          <span>© AstraForge 2025</span>
           <span>Creative Digital Agency</span>
         </div>
       </div>
