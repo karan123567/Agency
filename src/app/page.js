@@ -7,7 +7,7 @@ import Services from '@/components/Services'
 import WorkSection from '@/components/WorkSection'
 import Stats from '@/components/Stats'
 import Process from '@/components/Process'
-import Team from '@/components/Team'
+// import Team from '@/components/Team'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import Cursor from '@/components/Cursor'
@@ -31,7 +31,7 @@ export default function Home() {
         <WorkSection />
         <Stats />
         <Process />
-        <Team />
+        {/* <Team /> */}
         <CTA />
         <Footer />
       </div>
