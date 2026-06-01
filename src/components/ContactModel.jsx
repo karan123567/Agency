@@ -892,8 +892,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 
-const PROJECT_TYPES = ['Web Design & Development','Brand Identity','3D / Motion Experience','E-Commerce / SaaS','Full Brand + Web Package','Other']
-const BUDGETS = ['₹50k – ₹1L','₹1L – ₹3L','₹3L – ₹7L','₹7L – ₹15L','₹15L+','Let\'s discuss']
+const PROJECT_TYPES = ['Business Website','Landing Page','Web Application','SaaS Platform','E-commerce Store','AI Application','Custom Solution']
+const BUDGETS = ['₹25k – ₹50k','₹50k – ₹1L','₹1L – ₹2L','₹2L+','Let\'s discuss']
 
 export default function ContactModal() {
   const overlayRef = useRef(null)
@@ -991,7 +991,7 @@ export default function ContactModal() {
               ✦ New Project Inquiry
             </div>
             <h2 className="cf-title" style={{ fontFamily: 'Cinzel,serif', fontSize: 'clamp(32px,5vw,52px)', fontWeight: 600, lineHeight: 0.9, letterSpacing: '0.05em' }}>
-              {['LET\'S','BUILD','TOGETHER'].map((w,i) => (
+              {['LET\'S','BUILD','YOUR NEXT PRODUCT'].map((w,i) => (
                 <span key={i} style={{ display: 'block', overflow: 'hidden' }}>
                   <span style={{ display: 'block', color: i===2 ? 'transparent' : undefined, WebkitTextStroke: i===2 ? '1px rgba(248,242,232,0.3)' : undefined }}>
                     {i===2 ? <span style={{ background: 'linear-gradient(90deg,#ff7b2e,#f5c842)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>{w}</span> : w}
@@ -1029,7 +1029,7 @@ export default function ContactModal() {
               {/* Company */}
               <div className="cf-field" style={{ marginBottom: 24 }}>
                 <Field label="Company / Brand">
-                  <input type="text" placeholder="Your Studio / Company Name (optional)" value={form.company}
+                  <input type="text" placeholder="Company / Startup Name (optional)" value={form.company}
                     onChange={e=>setForm({...form,company:e.target.value})} style={inputStyle()} />
                 </Field>
               </div>
@@ -1063,7 +1063,7 @@ export default function ContactModal() {
               {/* Message */}
               <div className="cf-field" style={{ marginBottom: 32 }}>
                 <Field label="Tell Us About Your Project *" error={errors.message}>
-                  <textarea placeholder="Describe your vision, goals, timeline…" rows={5} value={form.message}
+                  <textarea placeholder="Tell us about your project, goals, timeline, and any references you'd like us to review." rows={5} value={form.message}
                     onChange={e=>{ setForm({...form,message:e.target.value}); setErrors({...errors,message:''}) }}
                     style={{ ...inputStyle(errors.message), resize: 'vertical', minHeight: 120 }} />
                 </Field>
@@ -1075,7 +1075,7 @@ export default function ContactModal() {
                   style={{ width: '100%', padding: '20px 32px', fontFamily: 'Space Mono,monospace', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#04010e', background: sending ? '#a08800' : '#f5c842', border: 'none', cursor: 'none', transition: 'background .3s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}
                   onMouseEnter={e=>!sending&&(e.currentTarget.style.background='#f8f2e8')}
                   onMouseLeave={e=>!sending&&(e.currentTarget.style.background='#f5c842')}>
-                  {sending ? <><Spinner />Awakening the cosmos…</> : <><span>Send My Vision</span><span>↗</span></>}
+                  {sending ? <><Spinner />Sending the details...</> : <><span>Send Project Details</span><span>↗</span></>}
                 </button>
                 <p style={{ fontFamily: 'Space Mono,monospace', fontSize: 9, letterSpacing: '0.1em', color: '#5a5280', textAlign: 'center', marginTop: 16 }}>
                   We reply within 24 hours · All inquiries are confidential

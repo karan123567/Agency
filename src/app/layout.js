@@ -1,14 +1,16 @@
-import './globals.css'
+import "./globals.css";
 
 export const metadata = {
-  title: 'SHAKTI STUDIO — Digital Cosmos',
-  description: 'We build extraordinary digital experiences — where technology meets the divine.',
-}
+  title: "AstraForge — Premium Digital Product Studio",
+
+  description:
+    "AstraForge is a premium digital product studio building high-performance websites, SaaS platforms, and immersive web experiences for ambitious brands and startups.",
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>{children}</body>
     </html>
-  )
+  );
 }

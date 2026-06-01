@@ -58,10 +58,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const SERVICES = [
-  { num: '01', icon: '⬡', title: 'Web Design &\nDevelopment',      tags: ['Next.js', 'Three.js', 'GSAP', 'WebGL'], desc: 'Immersive environments built with cutting-edge WebGL and motion.' },
-  { num: '02', icon: '◈', title: 'Brand Identity &\nVisual Systems', tags: ['Logo', 'Typography', 'Systems'],        desc: 'Mythic brand identities that command attention and inspire devotion.' },
-  { num: '03', icon: '⟁', title: 'Motion &\n3D Experiences',        tags: ['GSAP', 'R3F', 'Lottie', 'Framer'],      desc: 'Fluid animations that breathe cosmic life into every pixel.' },
-  { num: '04', icon: '⊛', title: 'E-Commerce &\nSaaS Platforms',    tags: ['Shopify', 'Stripe', 'CMS', 'API'],       desc: 'Revenue-generating platforms built for scale and transcendence.' },
+  { num: '01', icon: '⬡', title: 'Product Design &\nDevelopment',      tags: ['Next.js', 'Three.js', 'GSAP', 'WebGL'], desc: 'We build fast, responsive, conversion-focused digital products engineered for modern businesses.' },
+  { num: '02', icon: '◈', title: 'UI/UX &\nDesign Systems', tags: ['Logo', 'Typography', 'Systems'],        desc: 'Interfaces designed for clarity, usability, and premium customer experience.' },
+  { num: '03', icon: '⟁', title: 'Interactive \n3D Experiences',        tags: ['GSAP', 'R3F', 'Lottie', 'Framer'],      desc: 'Immersive interactions powered by modern frontend engineering.' },
+  { num: '04', icon: '⊛', title: 'E-Commerce &\nSAAS Platforms',    tags: ['Shopify', 'Stripe', 'CMS', 'API'],       desc: 'Revenue-generating platforms built for growth, performance, and scale.' },
 ]
 
 export default function Services() {
@@ -268,7 +268,7 @@ export default function Services() {
 
         <div className="svc-headline">
           <div>WHAT</div>
-          <div className="svc-headline-ghost">WE DO</div>
+          <div className="svc-headline-ghost">WE BUILD</div>
         </div>
 
         <div className="svc-grid">

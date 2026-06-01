@@ -294,7 +294,7 @@ export default function Nav() {
       {/* ── Main bar ── */}
       <nav className={`nav-root${scrolled ? ' scrolled' : ''}`}>
         <a href="#" className="nav-logo">
-          AstraForge<sup style={{ fontSize: 10, color: '#f5c842' }}>®</sup>
+          AstraForge<sup style={{ fontSize: 10, color: '#f5c842' }}></sup>
         </a>
 
         {/* Desktop links */}

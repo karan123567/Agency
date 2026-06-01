@@ -47,10 +47,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const STEPS = [
-  { num: '01', name: 'Discovery & Vision', dur: 'Week 1–2' },
-  { num: '02', name: 'Design & Prototype', dur: 'Week 2–4' },
-  { num: '03', name: 'Build & Animate',    dur: 'Week 4–8' },
-  { num: '04', name: 'Launch & Evolve',    dur: 'Week 8+'  },
+  { num: '01', name: 'DISCOVERY & STRATEGY', dur: 'Week 1–2' },
+  { num: '02', name: 'DESIGN & PROTOTYPE', dur: 'Week 2–4' },
+  { num: '03', name: 'BUILD & ENGINEER',    dur: 'Week 4–8' },
+  { num: '04', name: 'Launch & Scale',    dur: 'Week 8+'  },
 ]
 
 export default function Process() {
@@ -195,7 +195,7 @@ export default function Process() {
       `}</style>
 
       <section id="process" ref={ref} className="proc-section">
-        <div className="eyebrow proc-eyebrow">The Sacred Path</div>
+        <div className="eyebrow proc-eyebrow">HOW WE BUILD</div>
 
         {STEPS.map((s, i) => (
           <div

@@ -220,8 +220,8 @@ export default function CTA() {
 
           <h2 className="cta-h">
             LET'S BUILD<br />
-            YOUR DIGITAL<br />
-            <span className="cta-gradient">COSMOS</span>
+            YOUR NEXT<br />
+            <span className="cta-gradient">BIG IDEA</span>
           </h2>
 
           <button

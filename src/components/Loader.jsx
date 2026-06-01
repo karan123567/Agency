@@ -120,13 +120,13 @@ export default function Loader() {
       `}</style>
 
       <div ref={loaderRef} className="loader-root">
-        <div className="loader-om">ॐ</div>
+        {/* <div className="loader-om">ॐ</div> */}
         <div className="loader-title">AstraForge</div>
         <div className="loader-track">
           <div ref={barRef} className="loader-bar" />
         </div>
         <div ref={countRef} className="loader-count">0%</div>
-        <div className="loader-tag">Awakening the Cosmos</div>
+        <div className="loader-tag">FORGING DIGITAL PRODUCTS</div>
       </div>
     </>
   )

@@ -47,23 +47,27 @@
 //   )
 // }
 
-
-'use client'
-import { useEffect } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-gsap.registerPlugin(ScrollTrigger)
+"use client";
+import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   useEffect(() => {
     // Marquee
-    const mq = document.getElementById('mq-inner')
+    const mq = document.getElementById("mq-inner");
     if (mq) {
-      const clone = mq.cloneNode(true)
-      mq.parentElement.appendChild(clone)
-      gsap.to([mq, clone], { xPercent: -50, repeat: -1, duration: 28, ease: 'none' })
+      const clone = mq.cloneNode(true);
+      mq.parentElement.appendChild(clone);
+      gsap.to([mq, clone], {
+        xPercent: -50,
+        repeat: -1,
+        duration: 28,
+        ease: "none",
+      });
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -231,45 +235,50 @@ export default function Hero() {
 
       <section id="hero" className="hero-section">
         <div className="hero-eyebrow">
-          <span style={{ display: 'inline-block' }}>Creative Digital Agency — Est. 2025</span>
+          <span style={{ display: "inline-block" }}>
+            Digital Product Engineering Studio — EST. 2025
+          </span>
         </div>
 
         {/* Year label shown only on mobile, inline above headline */}
         <div className="hero-year-mobile">2025 — ∞</div>
 
         <h1 className="hero-title">
-          {['WE CRAFT', 'DIGITAL', 'COSMOS'].map((word, i) => (
+          {["WE DESIGN &", "ENGINEER", "DIGITAL PRODUCTS"].map((word, i) => (
             <span key={i} className="hero-line">
               <span
                 style={{
-                  color: i === 2 ? 'transparent' : undefined,
-                  WebkitTextStroke: i === 2 ? '1px rgba(248,242,232,0.3)' : undefined,
+                  color: i === 2 ? "transparent" : undefined,
+                  WebkitTextStroke:
+                    i === 2 ? "1px rgba(248,242,232,0.3)" : undefined,
                 }}
               >
-                {i === 2
-                  ? <span className="hero-word-cosmos">{word}</span>
-                  : word}
+                {i === 2 ? (
+                  <span className="hero-word-cosmos">{word}</span>
+                ) : (
+                  word
+                )}
               </span>
             </span>
           ))}
         </h1>
 
         <p className="hero-desc">
-          A collective of creators building extraordinary digital experiences where technology meets
-          the divine — every pixel, an offering.
+          We design and engineer high-performance websites, SaaS platforms, and
+          immersive digital experiences for ambitious brands and startups.
         </p>
 
         <div className="hero-scroll">
           <div className="hero-scroll-line" />
-          <span>Scroll to reveal Mahadev</span>
+          <span>Scroll to explore</span>
         </div>
 
         {/* Vertical year — desktop/tablet only */}
         <div className="hero-year">2025 — ∞</div>
 
         {/* Spacer so Three.js scroll-linked Shiva has room */}
-        <div style={{ height: '180vh' }} />
+        <div style={{ height: "180vh" }} />
       </section>
     </>
-  )
+  );
 }
