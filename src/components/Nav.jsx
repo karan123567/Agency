@@ -72,7 +72,7 @@ export default function Nav() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
-  const links = ['Work', 'Services', 'Team', 'Process']
+  const links = ['Work', 'Services','Process']
 
   return (
     <>

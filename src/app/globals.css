@@ -24,14 +24,21 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: auto; }
-body {
+
+/* ── Dark base lives on html so the fixed canvas can show through body ── */
+html {
+  scroll-behavior: auto;
   background: var(--bg);
+}
+
+body {
+  background: transparent; /* was: var(--bg) — moved to html so canvas bleeds through */
   color: var(--fg);
   font-family: 'Raleway', sans-serif;
   cursor: none;
   overflow-x: hidden;
 }
+
 body::after {
   content: '';
   position: fixed; inset: 0;
